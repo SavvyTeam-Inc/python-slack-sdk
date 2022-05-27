@@ -190,7 +190,7 @@ class Installation:
         return self.custom_values.get(name)
 
     def to_dict(self) -> Dict[str, Any]:
-        standard_values = {
+        return {
             "app_id": self.app_id,
             "enterprise_id": self.enterprise_id,
             "enterprise_name": self.enterprise_name,
@@ -221,7 +221,5 @@ class Installation:
             "is_enterprise_install": self.is_enterprise_install,
             "token_type": self.token_type,
             "installed_at": datetime.utcfromtimestamp(self.installed_at),
+            "custom_values": self.custom_values,
         }
-        # prioritize standard_values over custom_values
-        # when the same keys exist in both
-        return {**self.custom_values, **standard_values}
